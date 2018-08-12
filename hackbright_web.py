@@ -9,7 +9,12 @@ app = Flask(__name__)
 @app.route("/")
 def homepage():
 	""" May be a start point with 2 links to add and to search"""
+	return render_template("homepage.html")
 
+@app.route("/create_student")
+def create_student():
+	""" redirecting to create student """
+	return render_template("create_student.html")
 
 
 
@@ -21,7 +26,11 @@ def get_student():
 
     first, last, github = hackbright.get_student_by_github(github)
 
-    return render_template("student_info.html",github=github, first=first, last=last)
+    project_list = hackbright.get_grades_by_github(github)
+
+    print (project_list)
+
+    return render_template("student_info.html",github=github, first=first, last=last, list_projects=project_list)
 
 @app.route("/student-search")
 def get_student_form():

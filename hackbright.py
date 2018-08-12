@@ -109,7 +109,7 @@ def assign_grade(github, title, grade):
 
     db.session.commit()
 
-    print(f"Successfully assigned grade of {grade} for {github} in {title}")
+    print("Successfully assigned grade of {} for {} in {}".format(grade,github,title))
 
 
 def get_grades_by_github(github):
@@ -126,7 +126,7 @@ def get_grades_by_github(github):
     rows = db_cursor.fetchall()
 
     for row in rows:
-        print(f"Student {github} received grade of {row[1]} for {row[0]}")
+        print("Student {} received grade of {} for {}".format(github,row[1],row[0]))
 
     return rows
 
